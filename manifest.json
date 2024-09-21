@@ -1,0 +1,10 @@
+{
+	"name": "ArrozGoldOnlyMod",
+	"description": "This is a mod where's everything is golden bars.",
+	"version_number": "1.0.2",
+	"dependencies": [
+		"BepInEx-BepInExPack-5.4.2100"
+	],
+	"website_url": "https://github.com/Nestomiau/ArrFel_OnlyGoldMod",
+	"FullName": "ArrozFelino-GoldOnlyMod"
+}
