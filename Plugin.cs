@@ -1,10 +1,7 @@
-﻿using BepInEx;
+﻿using ArrFel_OnlyGoldMod.Patches;
+using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
-using System;
-using System.Collections.Generic;
-using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace ArFe_ChaosMod
 {
@@ -21,8 +18,9 @@ namespace ArFe_ChaosMod
 
         // Objects / References
         internal ManualLogSource mls;
-        internal static Mono mono;
         public static Main inst;
+        public SpawnableItemWithRarity goldBar = new SpawnableItemWithRarity();
+        public bool hanstCreatedGold = true;
 
         void Awake() 
         {
@@ -34,40 +32,42 @@ namespace ArFe_ChaosMod
 
             mls.LogInfo("Patching Scripts...");
             harmony.PatchAll(typeof(Main));
-            harmony.PatchAll(typeof(Mono));
+            harmony.PatchAll(typeof(RoundManagerPatches));
             mls.LogInfo("Patched Scripts.");
-
-            mls.LogInfo("Creating MonoBehavior Object...");
-            var goldHandlerObj = new GameObject("ArrFel_OGMHandler");
-            DontDestroyOnLoad(goldHandlerObj);
-            goldHandlerObj.hideFlags = (HideFlags)61;
-            goldHandlerObj.AddComponent<Mono>();
-            mono = (Mono)goldHandlerObj.GetComponent("Mono");
-            mls.LogInfo("Created MonoMonoBehavior Object.");
         }
-
-
     }
 
+    /*
     public class Mono : MonoBehaviour
     {
         SelectableLevel[] SelectableLevels = GameObject.FindObjectsOfType<SelectableLevel>();
         SpawnableItemWithRarity GoldDefault;
+        public GameObject goldAssingment;
 
         // Set Up Variables
-        bool setup_gold=false;
-        bool setup_levels=false;
+        bool setup_gold;
+        bool setup_levels;
+        void Awake() 
+        {
+            setup_gold = false;
+            setup_levels = false;
+            goldAssingment = GameObject.Find("GoldBar");
+        }
         void Update()
         {
+            goldAssingment = GameObject.Find("GoldBar");
+            if (goldAssingment) { Main.inst.mls.LogInfo("FUCK"); }
+
             // SETUP GOLDEN BARS
-            var GoldBar = GameObject.Find("GoldBar");
-            if (GoldBar != null && !setup_gold)
+            /*var GoldBar = GameObject.Find("GoldBar");
+            if (GoldBar && !setup_gold)
             {
                 GoldDefault.rarity = 100;
                 GoldDefault.spawnableItem = GoldBar.GetComponent<Item>();
                 setup_gold = true;
+                Main.inst.mls.LogInfo("Setted Up Gold Object");
             }
-            else if (GoldBar == null && setup_gold) { setup_gold = false; }
+            else if (!GoldBar && setup_gold) { setup_gold = false; }
 
             // SETUP LEVELS
             var DineLevel = GameObject.Find("DineLevel");
@@ -80,8 +80,10 @@ namespace ArFe_ChaosMod
                     SelectableLevels[_i].spawnableScrap.Add(GoldDefault);
                 }
                 setup_levels = true;
+                Main.inst.mls.LogInfo("Setted Up Levels");
             }
-            else if (DineLevel == null && setup_levels) { setup_gold = false; }
+            else if (DineLevel == null && setup_levels) { setup_levels = false; }
         }
     }
+    */
 }
