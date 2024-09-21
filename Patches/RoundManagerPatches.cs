@@ -24,7 +24,7 @@ namespace ArrFel_OnlyGoldMod.Patches
                 if (_item.spawnableItem.itemName == "Gold bar")
                 {
                     hanstGold = false;
-                    _item.rarity = 100;
+                    _item.rarity = 200;
                 }
             }
             if (hanstGold)
@@ -35,9 +35,9 @@ namespace ArrFel_OnlyGoldMod.Patches
                     {
                         if (items.itemName == "Gold bar")
                         {
+                            Main.inst.goldBar.rarity = 200;
                             Main.inst.goldBar.spawnableItem = items;
-                            Main.inst.goldBar.rarity = 100;
-                            Main.inst.hanstCreatedGold = true;
+                            Main.inst.hanstCreatedGold = false;
                         }
                     }
                 }
