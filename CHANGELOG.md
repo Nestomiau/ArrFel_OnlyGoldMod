@@ -1,4 +1,12 @@
 # ChangeLog
+## [1.0.5](https://github.com/Nestomiau/ArrFel_OnlyGoldMod/compare/1.0.4..1.0.5) - (22-09-2024)
+### Fixes
+Put the right version on the Plugin.cs;
+Put the right name for the namespace.
+
+### Removals
+Removed unecessary code.
+
 ## [1.0.4](https://github.com/Nestomiau/ArrFel_OnlyGoldMod/compare/1.0.3..1.0.4) - (21-09-2024)
 ### Fixes
 Actually put the right name on the manifest.json since on 1.0.3 it was a done just for the upload;
