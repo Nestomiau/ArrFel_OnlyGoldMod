@@ -3,7 +3,7 @@ using BepInEx;
 using BepInEx.Logging;
 using HarmonyLib;
 
-namespace ArFe_ChaosMod
+namespace ArrFel_OnlyGoldMod
 {
     [BepInPlugin(modGUID, modNAME, modVER)]
     public class Main : BaseUnityPlugin
@@ -11,7 +11,7 @@ namespace ArFe_ChaosMod
         // MOD Info
         public const string modGUID = "ArrFel.OnlyGoldMod";
         public const string modNAME = "Only Gold Mod";
-        public const string modVER = "1.0.3";
+        public const string modVER = "1.0.5";
         public const string modBY = "Mewings da Galaxia";
 
         private readonly Harmony harmony = new Harmony(modGUID);
